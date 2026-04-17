@@ -7,334 +7,91 @@
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --blue: #2563EB;
-    --blue-light: #DBEAFE;
-    --blue-dark: #1E40AF;
-    --green: #059669;
-    --green-light: #D1FAE5;
-    --red: #DC2626;
-    --red-light: #FEE2E2;
-    --gold: #D97706;
-    --gold-light: #FEF3C7;
-    --purple: #7C3AED;
-    --purple-light: #EDE9FE;
-    --bg: #F0F7FF;
-    --card: #FFFFFF;
-    --text: #1E293B;
-    --muted: #64748B;
-    --border: #E2E8F0;
-    --radius: 16px;
-    --radius-sm: 10px;
+    --blue: #2563EB; --blue-light: #DBEAFE; --blue-dark: #1E40AF;
+    --green: #059669; --green-light: #D1FAE5;
+    --red: #DC2626; --red-light: #FEE2E2;
+    --gold: #D97706; --gold-light: #FEF3C7;
+    --orange-light: #FFEDD5;
+    --bg: #F0F7FF; --card: #FFFFFF; --text: #1E293B; --muted: #64748B; --border: #E2E8F0;
+    --radius: 16px; --radius-sm: 10px;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    font-family: 'Nunito Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    padding: 0;
-  }
-
-  /* HERO */
-  .hero {
-    background: linear-gradient(135deg, #1E40AF 0%, #2563EB 50%, #7C3AED 100%);
-    padding: 2.5rem 1.5rem 3rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  }
+  body { font-family: 'Nunito Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+  .hero { background: linear-gradient(135deg, #1E40AF 0%, #2563EB 50%, #7C3AED 100%); padding: 2.5rem 1.5rem 3rem; text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content:''; position:absolute; inset:0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
   .hero-emoji { font-size: 48px; display: block; margin-bottom: 12px; position: relative; }
-  .hero h1 {
-    font-family: 'Nunito', sans-serif;
-    font-size: 28px;
-    font-weight: 900;
-    color: #fff;
-    margin-bottom: 6px;
-    position: relative;
-    letter-spacing: -0.5px;
-  }
-  .hero p {
-    font-size: 15px;
-    color: rgba(255,255,255,0.85);
-    position: relative;
-    margin-bottom: 1.5rem;
-  }
-
-  /* PROGRESS */
-  .progress-wrap {
-    position: relative;
-    background: rgba(255,255,255,0.2);
-    border-radius: 99px;
-    height: 12px;
-    overflow: hidden;
-    max-width: 400px;
-    margin: 0 auto 8px;
-  }
-  .progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, #34D399, #10B981);
-    border-radius: 99px;
-    transition: width 0.6s cubic-bezier(.4,0,.2,1);
-    width: 0%;
-  }
-  .progress-label {
-    font-size: 13px;
-    color: rgba(255,255,255,0.9);
-    font-weight: 600;
-    position: relative;
-  }
-
-  /* MAIN */
-  .main {
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 1.5rem 1rem 3rem;
-  }
-
-  /* ROOM CARD */
-  .room-card {
-    background: var(--card);
-    border-radius: var(--radius);
-    border: 2px solid var(--border);
-    margin-bottom: 12px;
-    overflow: hidden;
-    transition: border-color 0.2s, box-shadow 0.2s;
-  }
-  .room-card.done { border-color: #10B981; }
-  .room-card.locked { opacity: 0.55; }
-
-  .room-header {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 16px 18px;
-    cursor: pointer;
-    user-select: none;
-  }
-  .room-card.locked .room-header { cursor: not-allowed; }
-
-  .room-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    flex-shrink: 0;
-  }
-
-  .room-info { flex: 1; min-width: 0; }
-  .room-name {
-    font-family: 'Nunito', sans-serif;
-    font-size: 15px;
-    font-weight: 800;
-    color: var(--text);
-    margin-bottom: 2px;
-  }
-  .room-desc { font-size: 13px; color: var(--muted); }
-
-  .badge {
-    font-size: 12px;
-    font-weight: 700;
-    padding: 4px 12px;
-    border-radius: 99px;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-  .badge-open { background: var(--blue-light); color: var(--blue-dark); }
-  .badge-done { background: var(--green-light); color: var(--green); }
-  .badge-locked { background: var(--border); color: var(--muted); }
-
-  /* CHALLENGE BODY */
-  .challenge-body {
-    padding: 0 18px 18px;
-    border-top: 2px solid var(--border);
-    display: none;
-  }
-  .challenge-body.open { display: block; }
-
-  .q-label {
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin: 16px 0 10px;
-  }
-  .q-text {
-    font-size: 15px;
-    line-height: 1.6;
-    color: var(--text);
-    font-weight: 600;
-    margin-bottom: 12px;
-  }
-
-  /* OPTIONS */
-  .options { display: flex; flex-direction: column; gap: 8px; }
-  .opt {
-    padding: 11px 16px;
-    border: 2px solid var(--border);
-    border-radius: var(--radius-sm);
-    font-size: 14px;
-    font-family: 'Nunito Sans', sans-serif;
-    cursor: pointer;
-    color: var(--text);
-    background: #fff;
-    text-align: left;
-    font-weight: 600;
-    transition: border-color 0.15s, background 0.15s;
-    line-height: 1.4;
-  }
-  .opt:hover:not(:disabled) { border-color: var(--blue); background: var(--blue-light); }
-  .opt.correct { background: var(--green-light); border-color: var(--green); color: #065F46; }
-  .opt.wrong { background: var(--red-light); border-color: var(--red); color: #991B1B; }
-
-  /* FILL */
-  .fill-wrap { display: flex; flex-direction: column; gap: 8px; }
-  .fill-input {
-    width: 100%;
-    padding: 11px 14px;
-    border: 2px solid var(--border);
-    border-radius: var(--radius-sm);
-    font-size: 15px;
-    font-family: 'Nunito Sans', sans-serif;
-    font-weight: 600;
-    color: var(--text);
-    background: #fff;
-    outline: none;
-    transition: border-color 0.15s;
-  }
-  .fill-input:focus { border-color: var(--blue); }
-  .btn-check {
-    align-self: flex-start;
-    padding: 9px 20px;
-    background: var(--blue);
-    color: #fff;
-    border: none;
-    border-radius: var(--radius-sm);
-    font-size: 14px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 800;
-    cursor: pointer;
-    transition: background 0.15s;
-  }
-  .btn-check:hover { background: var(--blue-dark); }
-
-  /* FEEDBACK */
-  .feedback {
-    margin-top: 10px;
-    padding: 10px 14px;
-    border-radius: var(--radius-sm);
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 1.5;
-    display: none;
-  }
-  .feedback.show { display: block; }
-  .fb-ok { background: var(--green-light); color: #065F46; }
-  .fb-err { background: var(--red-light); color: #991B1B; }
-
-  /* NEXT BTN */
-  .btn-next {
-    margin-top: 14px;
-    padding: 10px 22px;
-    background: #fff;
-    color: var(--blue);
-    border: 2px solid var(--blue);
-    border-radius: var(--radius-sm);
-    font-size: 14px;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 800;
-    cursor: pointer;
-    display: none;
-    transition: background 0.15s;
-  }
-  .btn-next:hover { background: var(--blue-light); }
-
-  /* CODE REVEAL */
-  .code-reveal {
-    margin-top: 16px;
-    padding: 16px;
-    border-radius: var(--radius-sm);
-    background: var(--green-light);
-    border: 2px solid #10B981;
-    text-align: center;
-    display: none;
-  }
-  .code-reveal.show { display: block; }
-  .code-emoji { font-size: 28px; margin-bottom: 6px; }
-  .code-label { font-size: 12px; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 4px; }
-  .code-word {
-    font-family: 'Nunito', sans-serif;
-    font-size: 26px;
-    font-weight: 900;
-    color: #065F46;
-    letter-spacing: 4px;
-    margin-bottom: 4px;
-  }
-  .code-hint { font-size: 12px; color: var(--green); font-weight: 600; }
-
-  /* FINAL */
-  .final-panel {
-    background: linear-gradient(135deg, #065F46 0%, #059669 100%);
-    border-radius: var(--radius);
-    padding: 2.5rem 1.5rem;
-    text-align: center;
-    margin-top: 1.5rem;
-    display: none;
-  }
-  .final-panel.show { display: block; }
-  .final-trophy { font-size: 56px; display: block; margin-bottom: 12px; }
-  .final-title {
-    font-family: 'Nunito', sans-serif;
-    font-size: 22px;
-    font-weight: 900;
-    color: #fff;
-    margin-bottom: 8px;
-  }
-  .final-sub { font-size: 14px; color: rgba(255,255,255,0.85); margin-bottom: 16px; font-weight: 600; }
-  .final-codes {
-    background: rgba(255,255,255,0.15);
-    border-radius: var(--radius-sm);
-    padding: 14px 20px;
-    margin-bottom: 12px;
-  }
-  .final-code-label { font-size: 11px; font-weight: 800; color: rgba(255,255,255,0.7); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 8px; }
-  .final-code-words {
-    font-family: 'Nunito', sans-serif;
-    font-size: 18px;
-    font-weight: 900;
-    color: #fff;
-    letter-spacing: 2px;
-    line-height: 1.8;
-  }
-  .final-msg { font-size: 14px; color: rgba(255,255,255,0.9); font-weight: 600; }
+  .hero h1 { font-family:'Nunito',sans-serif; font-size:28px; font-weight:900; color:#fff; margin-bottom:6px; position:relative; }
+  .hero p { font-size:15px; color:rgba(255,255,255,0.85); position:relative; margin-bottom:1.5rem; }
+  .progress-wrap { background:rgba(255,255,255,0.2); border-radius:99px; height:12px; overflow:hidden; max-width:400px; margin:0 auto 8px; }
+  .progress-fill { height:100%; background:linear-gradient(90deg,#34D399,#10B981); border-radius:99px; transition:width 0.6s; width:0%; }
+  .progress-label { font-size:13px; color:rgba(255,255,255,0.9); font-weight:600; }
+  .main { max-width:680px; margin:0 auto; padding:1.5rem 1rem 3rem; }
+  .room-card { background:var(--card); border-radius:var(--radius); border:2px solid var(--border); margin-bottom:12px; overflow:hidden; }
+  .room-card.done { border-color:#10B981; }
+  .room-card.locked { opacity:0.55; }
+  .room-header { display:flex; align-items:center; gap:14px; padding:16px 18px; cursor:pointer; user-select:none; }
+  .room-card.locked .room-header { cursor:not-allowed; }
+  .room-icon { width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
+  .room-info { flex:1; min-width:0; }
+  .room-name { font-family:'Nunito',sans-serif; font-size:15px; font-weight:800; color:var(--text); margin-bottom:2px; }
+  .room-desc { font-size:13px; color:var(--muted); }
+  .badge { font-size:12px; font-weight:700; padding:4px 12px; border-radius:99px; white-space:nowrap; flex-shrink:0; }
+  .badge-open { background:var(--blue-light); color:var(--blue-dark); }
+  .badge-done { background:var(--green-light); color:var(--green); }
+  .badge-locked { background:var(--border); color:var(--muted); }
+  .challenge-body { padding:0 18px 18px; border-top:2px solid var(--border); display:none; }
+  .challenge-body.open { display:block; }
+  .q-label { font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin:16px 0 10px; }
+  .q-text { font-size:15px; line-height:1.6; color:var(--text); font-weight:600; margin-bottom:12px; }
+  .attempts-bar { display:flex; gap:6px; margin-bottom:12px; align-items:center; }
+  .attempt-dot { width:14px; height:14px; border-radius:50%; background:var(--green); transition:background 0.2s; }
+  .attempt-dot.used { background:var(--red); }
+  .attempts-label { font-size:12px; color:var(--muted); font-weight:600; margin-left:4px; }
+  .options { display:flex; flex-direction:column; gap:8px; }
+  .opt { padding:11px 16px; border:2px solid var(--border); border-radius:var(--radius-sm); font-size:14px; font-family:'Nunito Sans',sans-serif; cursor:pointer; color:var(--text); background:#fff; text-align:left; font-weight:600; transition:border-color 0.15s,background 0.15s; line-height:1.4; }
+  .opt:hover:not(:disabled) { border-color:var(--blue); background:var(--blue-light); }
+  .opt.correct { background:var(--green-light); border-color:var(--green); color:#065F46; }
+  .opt.wrong { background:var(--red-light); border-color:var(--red); color:#991B1B; }
+  .hint-box { margin-top:10px; padding:10px 14px; border-radius:var(--radius-sm); background:var(--gold-light); border:1.5px solid var(--gold); font-size:13px; font-weight:600; color:#92400E; display:none; }
+  .hint-box.show { display:block; }
+  .fill-wrap { display:flex; flex-direction:column; gap:8px; }
+  .fill-input { width:100%; padding:11px 14px; border:2px solid var(--border); border-radius:var(--radius-sm); font-size:15px; font-family:'Nunito Sans',sans-serif; font-weight:600; color:var(--text); background:#fff; outline:none; transition:border-color 0.15s; }
+  .fill-input:focus { border-color:var(--blue); }
+  .btn-check { align-self:flex-start; padding:9px 20px; background:var(--blue); color:#fff; border:none; border-radius:var(--radius-sm); font-size:14px; font-family:'Nunito',sans-serif; font-weight:800; cursor:pointer; }
+  .btn-check:disabled { opacity:0.5; cursor:not-allowed; }
+  .feedback { margin-top:10px; padding:10px 14px; border-radius:var(--radius-sm); font-size:14px; font-weight:600; line-height:1.5; display:none; }
+  .feedback.show { display:block; }
+  .fb-ok { background:var(--green-light); color:#065F46; }
+  .fb-err { background:var(--red-light); color:#991B1B; }
+  .fb-reveal { background:var(--orange-light); color:#9A3412; }
+  .btn-next { margin-top:14px; padding:10px 22px; background:#fff; color:var(--blue); border:2px solid var(--blue); border-radius:var(--radius-sm); font-size:14px; font-family:'Nunito',sans-serif; font-weight:800; cursor:pointer; display:none; }
+  .code-reveal { margin-top:16px; padding:16px; border-radius:var(--radius-sm); background:var(--green-light); border:2px solid #10B981; text-align:center; display:none; }
+  .code-reveal.show { display:block; }
+  .code-emoji { font-size:28px; margin-bottom:6px; }
+  .code-label { font-size:12px; font-weight:700; color:var(--green); text-transform:uppercase; letter-spacing:.06em; margin-bottom:4px; }
+  .code-word { font-family:'Nunito',sans-serif; font-size:26px; font-weight:900; color:#065F46; letter-spacing:4px; margin-bottom:4px; }
+  .code-hint { font-size:12px; color:var(--green); font-weight:600; }
+  .final-panel { background:linear-gradient(135deg,#065F46 0%,#059669 100%); border-radius:var(--radius); padding:2.5rem 1.5rem; text-align:center; margin-top:1.5rem; display:none; }
+  .final-panel.show { display:block; }
+  .final-trophy { font-size:56px; display:block; margin-bottom:12px; }
+  .final-title { font-family:'Nunito',sans-serif; font-size:22px; font-weight:900; color:#fff; margin-bottom:8px; }
+  .final-sub { font-size:14px; color:rgba(255,255,255,0.85); margin-bottom:16px; font-weight:600; }
+  .final-codes { background:rgba(255,255,255,0.15); border-radius:var(--radius-sm); padding:14px 20px; margin-bottom:12px; }
+  .final-code-label { font-size:11px; font-weight:800; color:rgba(255,255,255,0.7); letter-spacing:.08em; text-transform:uppercase; margin-bottom:8px; }
+  .final-code-words { font-family:'Nunito',sans-serif; font-size:18px; font-weight:900; color:#fff; letter-spacing:2px; line-height:1.8; }
+  .final-msg { font-size:14px; color:rgba(255,255,255,0.9); font-weight:600; }
 </style>
 </head>
 <body>
-
 <div class="hero">
   <span class="hero-emoji">🔐</span>
   <h1>Escape Room — Unidad 6</h1>
   <p>Completa las 8 salas para descubrir el código final</p>
-  <div class="progress-wrap">
-    <div class="progress-fill" id="pbar"></div>
-  </div>
+  <div class="progress-wrap"><div class="progress-fill" id="pbar"></div></div>
   <div class="progress-label" id="plabel">0 de 8 salas completadas</div>
 </div>
-
 <div class="main">
   <div id="rooms-list"></div>
-
   <div class="final-panel" id="final-panel">
     <span class="final-trophy">🏆</span>
     <div class="final-title">¡Escapaste! ¡Eres increíble!</div>
@@ -346,214 +103,79 @@
     <div class="final-msg">Muéstraselo a tu maestra para recibir tu recompensa.</div>
   </div>
 </div>
-
 <script>
-const TOTAL = 8;
-const ROOMS = [
-  {
-    id:0, icon:"📚", bg:"#DBEAFE",
-    name:"Sala 1 — Vocabulario Semana 1",
-    desc:"consecuencias, acciones, decisiones, designar, honrar",
-    code:"HONOR",
-    questions:[
-      {type:"mc",q:"Cuando tomas una decisión, ¿qué pueden traer los resultados de esa decisión?",
-       opts:["Acciones","Consecuencias","Designaciones","Honores"],ans:1,
-       fb_ok:"¡Correcto! Las consecuencias son los resultados que vienen después de una decisión o acción.",
-       fb_err:"Piensa en qué pasa después de que tomas una decisión. ¿Cómo llamamos a eso que ocurre?"},
-      {type:"mc",q:"¿Cuál es la mejor definición de designar?",
-       opts:["Celebrar a alguien con una fiesta","Escoger o nombrar a alguien para una tarea o cargo","Castigar a alguien por una mala acción","Ignorar a alguien del grupo"],ans:1,
-       fb_ok:"¡Exacto! Designar es escoger o nombrar oficialmente a alguien para un rol.",
-       fb_err:"Piensa en cuando alguien es nombrado para un cargo importante, como un presidente o capitán de equipo."},
-      {type:"mc",q:"Tu escuela organiza un evento para honrar a los estudiantes más destacados. ¿Qué significa honrar aquí?",
-       opts:["Ignorar sus logros","Castigarlos por sus errores","Reconocer y celebrar sus logros con respeto","Pedirles que hagan más trabajo"],ans:2,
-       fb_ok:"¡Muy bien! Honrar significa reconocer y mostrar respeto por los logros o valores de alguien.",
-       fb_err:"Piensa en cómo te sentirías si alguien celebrara algo importante que hiciste."},
-      {type:"fill",q:"Completa: Las __________ que tomamos todos los días pueden tener consecuencias importantes.",
-       ans:["decisiones","decisión"],
-       fb_ok:"¡Perfecto! Las decisiones que tomamos cada día pueden tener grandes consecuencias.",
-       fb_err:"¿Qué es lo que tomas cuando escoges entre dos opciones?"},
-      {type:"mc",q:"¿Cuál de estas es un ejemplo de una acción?",
-       opts:["Pensar silenciosamente en algo","Soñar con ser campeón","Ayudar a un compañero que está triste","Sentir miedo antes de una prueba"],ans:2,
-       fb_ok:"¡Correcto! Una acción es algo que haces, no solo algo que piensas o sientes.",
-       fb_err:"Una acción es algo que se hace, no algo que se piensa o se siente."}
-    ]
-  },
-  {
-    id:1, icon:"📖", bg:"#E0F2FE",
-    name:"Sala 2 — Vocabulario Semana 2",
-    desc:"costearlo, magníficas, inscripción, de verdad",
-    code:"COSTO",
-    questions:[
-      {type:"mc",q:"¿Qué significa costearlo?",
-       opts:["Pagarlo con el propio dinero","Guardarlo para después","Regalárselo a alguien","Pedirlo prestado"],ans:0,
-       fb_ok:"¡Correcto! Costearlo significa pagar algo con el propio dinero.",
-       fb_err:"Piensa en cómo Kendra ayudó a Sara con la inscripción del campamento."},
-      {type:"mc",q:"Las actuaciones de las magas raperas son descritas como magníficas. ¿Cuál es el mejor sinónimo?",
-       opts:["Pequeña y sencilla","Extraordinaria y asombrosa","Rápida y difícil","Divertida pero fácil"],ans:1,
-       fb_ok:"¡Exacto! Magnífica significa extraordinaria, de muy alta calidad.",
-       fb_err:"Piensa en algo que te deja sin palabras por lo bueno que es."},
-      {type:"mc",q:"¿Para qué sirve una inscripción?",
-       opts:["Para pagar una deuda","Para registrarse oficialmente en una actividad","Para pedir un favor","Para dar un discurso"],ans:1,
-       fb_ok:"¡Muy bien! La inscripción es el registro oficial para participar en algo.",
-       fb_err:"En la historia, Sara necesitaba este documento para entrar al campamento."},
-      {type:"mc",q:"Tu amigo dice: '¿De verdad ganaste el primer lugar?' ¿Qué expresa?",
-       opts:["Está enojado contigo","Está confundido sobre las reglas","Está sorprendido y quiere confirmar lo que escuchó","No te está escuchando"],ans:2,
-       fb_ok:"¡Correcto! 'De verdad' expresa sorpresa y necesidad de confirmar algo.",
-       fb_err:"Piensa en cómo te sientes cuando escuchas algo muy sorprendente."}
-    ]
-  },
-  {
-    id:2, icon:"🐾", bg:"#DCFCE7",
-    name:"Sala 3 — Amelia y Rocky",
-    desc:"Comprensión del texto ancora 1",
-    code:"AMIGA",
-    questions:[
-      {type:"mc",q:"¿Quién es Rocky en la historia?",
-       opts:["El hermano de Amelia","El perro de Amelia","El maestro de la escuela","El vecino de Amelia"],ans:1,
-       fb_ok:"¡Correcto! Rocky es el perro y mejor amigo de Amelia.",
-       fb_err:"Rocky es uno de los personajes más importantes. ¿Con quién pasa Amelia todo el tiempo?"},
-      {type:"mc",q:"¿Cuál es el problema principal en Amelia y Rocky?",
-       opts:["Amelia no quiere ir a la escuela","Amelia tiene que separarse de Rocky cuando empieza la escuela","Rocky se pierde en el vecindario","Rocky no quiere comer"],ans:1,
-       fb_ok:"¡Muy bien! El problema es que Amelia y Rocky deben separarse cuando ella empieza la escuela.",
-       fb_err:"Piensa en qué cambia en la vida de Amelia al comienzo del cuento."},
-      {type:"fill",q:"Completa: Al comienzo, Amelia y Rocky eran __________.",
-       ans:["inseparables","siempre juntos","juntos"],
-       fb_ok:"¡Excelente! Amelia y Rocky eran inseparables.",
-       fb_err:"Piensa en una palabra para dos amigos que nunca se separan."}
-    ]
-  },
-  {
-    id:3, icon:"🎤", bg:"#F3E8FF",
-    name:"Sala 4 — Las magas raperas",
-    desc:"Comprensión del texto ancora 2",
-    code:"RIMAS",
-    questions:[
-      {type:"mc",q:"¿Cuál es el problema principal que enfrenta Kendra?",
-       opts:["No sabe rapear","Su amiga Sara no tiene dinero para pagar la inscripción al campamento","Kendra y Sara se pelean","Kendra quiere ir sola al campamento"],ans:1,
-       fb_ok:"¡Correcto! Sara no puede costear la inscripción y Kendra busca cómo ayudarla.",
-       fb_err:"Piensa en qué impide que Sara participe en el campamento."},
-      {type:"mc",q:"¿Cómo resuelve Kendra el problema?",
-       opts:["Le pide dinero prestado a su maestra","Usa su propio dinero para pagar la inscripción de Sara","Organiza una venta de pasteles","Le pide ayuda a sus padres"],ans:1,
-       fb_ok:"¡Exacto! Kendra usa su propio dinero para costear la inscripción de Sara.",
-       fb_err:"Kendra usa algo que le pertenece para ayudar a su amiga. ¿Qué fue?"},
-      {type:"mc",q:"¿Qué rasgo de carácter muestra Kendra con ese acto?",
-       opts:["Valentía física","Generosidad y amistad verdadera","Competitividad","Obediencia a las reglas"],ans:1,
-       fb_ok:"¡Muy bien! Kendra demuestra generosidad genuina, el rasgo central de su personaje.",
-       fb_err:"Piensa en por qué alguien usaría su propio dinero para ayudar a un amigo."},
-      {type:"mc",q:"La decisión de Kendra de usar su dinero tuvo consecuencias positivas. ¿Cuál fue la más importante?",
-       opts:["Kendra se quedó sin dinero para sus cosas","Sara pudo participar en el campamento y las dos fortalecieron su amistad","Kendra ganó un premio especial","La maestra felicitó a Kendra frente a la clase"],ans:1,
-       fb_ok:"¡Correcto! La consecuencia más importante fue que Sara pudo ir y su amistad se fortaleció.",
-       fb_err:"Piensa en cómo cambió la situación de Sara y la relación entre las dos amigas."}
-    ]
-  },
-  {
-    id:4, icon:"🏛️", bg:"#FEF9C3",
-    name:"Sala 5 — Una presidenta para todos",
-    desc:"Comprensión del texto ancora 3",
-    code:"VOTOS",
-    questions:[
-      {type:"mc",q:"¿Cuál era el primer eslogan de Katarina?",
-       opts:["'Unamuno no es solo para algunos'","'Unamuno es la número uno'","'Todos votamos por Katarina'","'Juntos somos mejores'"],ans:1,
-       fb_ok:"¡Correcto! Su primer eslogan hablaba solo de ella, no de todos.",
-       fb_err:"El primer eslogan de Katarina se enfocaba solo en ella misma."},
-      {type:"mc",q:"¿Por qué Katarina cambió su eslogan?",
-       opts:["Porque su maestra se lo ordenó","Porque quería ganarle a su rival","Porque se dio cuenta de que una buena presidenta representa a todos","Porque su eslogan original era muy largo"],ans:2,
-       fb_ok:"¡Muy bien! Katarina entendió que liderar es representar a todos, no solo a uno mismo.",
-       fb_err:"Piensa en lo que aprendió Katarina sobre el verdadero significado de ser presidenta."},
-      {type:"fill",q:"Escribe el eslogan final de Katarina: 'Unamuno no es solo para __________.'",
-       ans:["algunos","unos pocos"],
-       fb_ok:"¡Perfecto! 'Unamuno no es solo para algunos' — un mensaje que incluye a todos.",
-       fb_err:"El eslogan nuevo de Katarina habla de incluir a todos los estudiantes."}
-    ]
-  },
-  {
-    id:5, icon:"⚖️", bg:"#EDE9FE",
-    name:"Sala 6 — Comparar y contrastar",
-    desc:"Los tres textos de la Unidad 6",
-    code:"TEMAS",
-    questions:[
-      {type:"mc",q:"¿Qué tienen en común Amelia, Kendra y Katarina?",
-       opts:["Las tres son presidentas de su clase","Las tres enfrentan un reto y lo superan gracias a sus valores","Las tres tienen animales como mascotas","Las tres participan en un campamento de música"],ans:1,
-       fb_ok:"¡Excelente! En los tres textos, las protagonistas superan retos usando sus valores.",
-       fb_err:"Piensa en qué hace cada personaje cuando enfrenta su problema principal."},
-      {type:"mc",q:"¿En qué se diferencia el reto de Amelia del de Kendra y Katarina?",
-       opts:["Amelia enfrenta un cambio personal (separarse de Rocky); las otras enfrentan retos de comunidad y liderazgo","Amelia no tiene ningún problema","Las tres enfrentan exactamente el mismo tipo de reto","Kendra y Katarina no tienen retos en sus historias"],ans:0,
-       fb_ok:"¡Correcto! Cada personaje enfrenta un tipo diferente de reto, aunque todas los superan.",
-       fb_err:"Piensa en el problema específico que enfrenta cada una."},
-      {type:"mc",q:"¿Cuál es un tema compartido por los tres textos?",
-       opts:["La importancia del deporte","La amistad, la comunidad y apoyarse mutuamente","Los animales como mejores amigos","La competencia entre escuelas"],ans:1,
-       fb_ok:"¡Muy bien! Los tres textos hablan de apoyarse, conectarse con otros y superar retos juntos.",
-       fb_err:"Piensa en qué lección de vida aparece en los tres cuentos."}
-    ]
-  },
-  {
-    id:6, icon:"✏️", bg:"#FFE4E6",
-    name:"Sala 7 — Gramática",
-    desc:"Plurales irregulares (-z → -ces)",
-    code:"PLUCES",
-    questions:[
-      {type:"mc",q:"¿Cuál es el plural correcto de 'feliz'?",
-       opts:["felizs","felizes","felices","felics"],ans:2,
-       fb_ok:"¡Correcto! Las palabras que terminan en -z cambian a -ces en plural: feliz → felices.",
-       fb_err:"Recuerda: cuando una palabra termina en -z, en plural cambia la z por c y se agrega -es."},
-      {type:"mc",q:"¿Cuál oración usa el plural irregular correctamente?",
-       opts:["Los leones son animales ferozs.","Los leones son animales ferozes.","Los leones son animales feroces.","Los leones son animales ferocs."],ans:2,
-       fb_ok:"¡Excelente! Feroz → feroces sigue la regla -z → -ces.",
-       fb_err:"La regla dice: -z en singular → -ces en plural."},
-      {type:"fill",q:"Escribe el plural de 'audaz': __________",
-       ans:["audaces"],
-       fb_ok:"¡Perfecto! audaz → audaces. Dominas la regla -z → -ces.",
-       fb_err:"Cambia la -z final por -c y agrega -es: au-da-ces."},
-      {type:"fill",q:"Escribe el plural de 'veloz': __________",
-       ans:["veloces"],
-       fb_ok:"¡Muy bien! veloz → veloces.",
-       fb_err:"Aplica la misma regla: veloz → velo-ces."}
-    ]
-  },
-  {
-    id:7, icon:"💬", bg:"#FEE2E2",
-    name:"Sala 8 — Escritura y reflexión",
-    desc:"Pensamiento crítico sobre los tres textos",
-    code:"LIBRE",
-    questions:[
-      {type:"mc",q:"¿Cuál es el mejor comienzo para una conclusión de un ensayo?",
-       opts:["'Primero, Katarina...'","'En conclusión, estos textos nos enseñan que...'","'Yo creo que...' sin ningún apoyo del texto","'El texto dice...' al final sin cerrar la idea"],ans:1,
-       fb_ok:"¡Correcto! Una conclusión fuerte retoma la idea central con conectores como 'en conclusión'.",
-       fb_err:"Una conclusión debe cerrar el argumento, no empezar uno nuevo."},
-      {type:"mc",q:"¿Qué tipo de pregunta te pide usar el texto Y tu propia opinión o experiencia?",
-       opts:["Right There","Think and Search","Author and Me"],ans:2,
-       fb_ok:"¡Exacto! Author and Me combina evidencia del texto con tu propio pensamiento.",
-       fb_err:"Revisa el marco QAR que hemos practicado en clase."},
-      {type:"mc",q:"Kendra, Katarina y Amelia tomaron decisiones importantes. ¿Qué pregunta QAR te pide reflexionar sobre las consecuencias usando TUS ideas?",
-       opts:["Right There: la respuesta está escrita en el texto","Think and Search: busco en varias partes del texto","Author and Me: uso el texto y reflexiono con mis propias ideas"],ans:2,
-       fb_ok:"¡Muy bien! Cuando reflexionas sobre consecuencias y usas tus propias ideas, es Author and Me.",
-       fb_err:"¿Puedes encontrar la respuesta directamente en el texto, o necesitas pensar tú también?"}
-    ]
-  }
+const TOTAL=8, MAX_MC=4, MAX_FILL=2;
+const ROOMS=[
+  {id:0,icon:"📚",bg:"#DBEAFE",name:"Sala 1 — Vocabulario Semana 1",desc:"consecuencias, acciones, decisiones, designar, honrar",code:"HONOR",questions:[
+    {type:"mc",q:"Cuando tomas una decisión, ¿qué pueden traer los resultados de esa decisión?",opts:["Acciones","Consecuencias","Designaciones","Honores"],ans:1,hints:["Piensa en qué ocurre DESPUÉS de que tomas una decisión.","Esta palabra empieza con 'C' y describe los efectos de nuestras acciones.","Si haces algo bueno, las __________ son positivas; si haces algo malo, son negativas.","La respuesta correcta es: Consecuencias."]},
+    {type:"mc",q:"¿Cuál es la mejor definición de designar?",opts:["Celebrar a alguien con una fiesta","Escoger o nombrar a alguien para una tarea o cargo","Castigar a alguien por una mala acción","Ignorar a alguien del grupo"],ans:1,hints:["Piensa en cuando alguien recibe un cargo o responsabilidad especial.","Un maestro puede __________ a un estudiante como líder del grupo.","Esta palabra tiene que ver con nombrar o elegir a alguien oficialmente.","La respuesta correcta es: Escoger o nombrar a alguien para una tarea o cargo."]},
+    {type:"mc",q:"Tu escuela organiza un evento para honrar a los estudiantes destacados. ¿Qué significa honrar aquí?",opts:["Ignorar sus logros","Castigarlos por sus errores","Reconocer y celebrar sus logros con respeto","Pedirles que hagan más trabajo"],ans:2,hints:["Honrar es algo positivo que hace sentir bien a la persona.","Piensa en cómo te sentirías si alguien celebrara algo importante que hiciste.","Honrar significa mostrar respeto y admiración por alguien.","La respuesta correcta es: Reconocer y celebrar sus logros con respeto."]},
+    {type:"fill",q:"Completa: Las __________ que tomamos todos los días pueden tener consecuencias importantes.",ans:["decisiones","decisión"],hints:["Piensa en lo que haces cuando escoges entre dos opciones.","Esta palabra empieza con 'D'. La tomamos cuando escogemos entre opciones."]},
+    {type:"mc",q:"¿Cuál de estas es un ejemplo de una acción?",opts:["Pensar silenciosamente en algo","Soñar con ser campeón","Ayudar a un compañero que está triste","Sentir miedo antes de una prueba"],ans:2,hints:["Una acción es algo que SE HACE, no algo que se piensa o se siente.","¿Cuál opción describe algo que puedes hacer físicamente?","Pensar, soñar y sentir no son acciones — son pensamientos o emociones.","La respuesta correcta es: Ayudar a un compañero."]}
+  ]},
+  {id:1,icon:"📖",bg:"#E0F2FE",name:"Sala 2 — Vocabulario Semana 2",desc:"costearlo, magníficas, inscripción, de verdad",code:"COSTO",questions:[
+    {type:"mc",q:"¿Qué significa costearlo?",opts:["Pagarlo con el propio dinero","Guardarlo para después","Regalárselo a alguien","Pedirlo prestado"],ans:0,hints:["En la historia, Kendra usó ALGO SUYO para ayudar a Sara.","Costearlo tiene que ver con el dinero y con pagar algo.","Kendra usó su propio dinero para __________ la inscripción de Sara.","La respuesta correcta es: Pagarlo con el propio dinero."]},
+    {type:"mc",q:"Las actuaciones de las magas raperas son descritas como magníficas. ¿Cuál es el mejor sinónimo?",opts:["Pequeña y sencilla","Extraordinaria y asombrosa","Rápida y difícil","Divertida pero fácil"],ans:1,hints:["Magnífica es una palabra muy positiva y fuerte.","Si algo es magnífico, te deja sin palabras de lo bueno que es.","Es lo opuesto de ordinario o sencillo.","La respuesta correcta es: Extraordinaria y asombrosa."]},
+    {type:"mc",q:"¿Para qué sirve una inscripción?",opts:["Para pagar una deuda","Para registrarse oficialmente en una actividad","Para pedir un favor","Para dar un discurso"],ans:1,hints:["En la historia, Sara necesitaba este documento para entrar al campamento.","Una inscripción es un trámite oficial, como cuando te anotas en algo.","Sin la inscripción, Sara no podía participar en el campamento.","La respuesta correcta es: Para registrarse oficialmente en una actividad."]},
+    {type:"mc",q:"Tu amigo dice: '¿De verdad ganaste el primer lugar?' ¿Qué expresa?",opts:["Está enojado contigo","Está confundido sobre las reglas","Está sorprendido y quiere confirmar lo que escuchó","No te está escuchando"],ans:2,hints:["Piensa en el tono — ¿suena enojado o sorprendido?","'¿De verdad?' se usa cuando algo nos sorprende tanto que queremos confirmarlo.","Es una expresión de asombro, no de enojo ni confusión.","La respuesta correcta es: Está sorprendido y quiere confirmar lo que escuchó."]}
+  ]},
+  {id:2,icon:"🐾",bg:"#DCFCE7",name:"Sala 3 — Amelia y Rocky",desc:"Comprensión del texto ancora 1",code:"AMIGA",questions:[
+    {type:"mc",q:"¿Quién es Rocky en la historia?",opts:["El hermano de Amelia","El perro de Amelia","El maestro de la escuela","El vecino de Amelia"],ans:1,hints:["Rocky es el ser más importante en la vida de Amelia.","Rocky es un animal que vive con Amelia.","Amelia y Rocky son inseparables — Rocky es su mascota favorita.","La respuesta correcta es: El perro de Amelia."]},
+    {type:"mc",q:"¿Cuál es el problema principal en Amelia y Rocky?",opts:["Amelia no quiere ir a la escuela","Amelia tiene que separarse de Rocky cuando empieza la escuela","Rocky se pierde en el vecindario","Rocky no quiere comer"],ans:1,hints:["El problema tiene que ver con un cambio grande en la vida de Amelia.","Amelia empieza algo nuevo y eso cambia su rutina con Rocky.","Piensa en qué pasa cuando los niños empiezan la escuela por primera vez.","La respuesta correcta es: Amelia tiene que separarse de Rocky cuando empieza la escuela."]},
+    {type:"fill",q:"Completa: Al comienzo, Amelia y Rocky eran __________.",ans:["inseparables","siempre juntos","juntos"],hints:["Esta palabra describe a dos seres que nunca se separan.","Empieza con 'i': i-n-s-e-p-a-r-a-b-l-e-s."]}
+  ]},
+  {id:3,icon:"🎤",bg:"#F3E8FF",name:"Sala 4 — Las magas raperas",desc:"Comprensión del texto ancora 2",code:"RIMAS",questions:[
+    {type:"mc",q:"¿Cuál es el problema principal que enfrenta Kendra?",opts:["No sabe rapear","Su amiga Sara no tiene dinero para pagar la inscripción al campamento","Kendra y Sara se pelean","Kendra quiere ir sola al campamento"],ans:1,hints:["El problema tiene que ver con dinero y con un evento especial.","Sara quería ir a algún lugar, pero algo se lo impedía.","La inscripción al campamento tenía un costo que Sara no podía pagar.","La respuesta correcta es: Sara no tiene dinero para la inscripción al campamento."]},
+    {type:"mc",q:"¿Cómo resuelve Kendra el problema?",opts:["Le pide dinero prestado a su maestra","Usa su propio dinero para pagar la inscripción de Sara","Organiza una venta de pasteles","Le pide ayuda a sus padres"],ans:1,hints:["Kendra usó algo que le pertenecía a ella para ayudar a su amiga.","No pidió ayuda a nadie — lo resolvió sola con lo que tenía.","Kendra hizo un sacrificio personal por Sara.","La respuesta correcta es: Usa su propio dinero para pagar la inscripción de Sara."]},
+    {type:"mc",q:"¿Qué rasgo de carácter muestra Kendra con ese acto?",opts:["Valentía física","Generosidad y amistad verdadera","Competitividad","Obediencia a las reglas"],ans:1,hints:["Kendra dio algo suyo sin esperar nada a cambio.","Este rasgo tiene que ver con dar y con cuidar a los demás.","Una persona con este rasgo piensa en los demás antes que en sí misma.","La respuesta correcta es: Generosidad y amistad verdadera."]},
+    {type:"mc",q:"La decisión de Kendra tuvo consecuencias positivas. ¿Cuál fue la más importante?",opts:["Kendra se quedó sin dinero","Sara pudo participar en el campamento y las dos fortalecieron su amistad","Kendra ganó un premio especial","La maestra felicitó a Kendra frente a la clase"],ans:1,hints:["Piensa en cómo cambió la situación de SARA después de que Kendra la ayudó.","La consecuencia más importante no es un premio — es algo más valioso.","La amistad entre las dos niñas cambió gracias a este acto.","La respuesta correcta es: Sara pudo participar y las dos fortalecieron su amistad."]}
+  ]},
+  {id:4,icon:"🏛️",bg:"#FEF9C3",name:"Sala 5 — Una presidenta para todos",desc:"Comprensión del texto ancora 3",code:"VOTOS",questions:[
+    {type:"mc",q:"¿Cuál era el primer eslogan de Katarina?",opts:["'Unamuno no es solo para algunos'","'Unamuno es la número uno'","'Todos votamos por Katarina'","'Juntos somos mejores'"],ans:1,hints:["El primer eslogan de Katarina hablaba solo de ella, no de los demás.","Busca el eslogan que menciona 'la número uno'.","Su primer eslogan era egoísta — solo pensaba en ella misma.","La respuesta correcta es: 'Unamuno es la número uno'."]},
+    {type:"mc",q:"¿Por qué Katarina cambió su eslogan?",opts:["Porque su maestra se lo ordenó","Porque quería ganarle a su rival","Porque se dio cuenta de que una buena presidenta representa a todos","Porque su eslogan original era muy largo"],ans:2,hints:["El cambio vino de adentro — Katarina aprendió algo importante.","Una buena líder no piensa solo en sí misma.","Katarina entendió que ser presidenta significa representar a TODOS.","La respuesta correcta es: Porque se dio cuenta de que una buena presidenta representa a todos."]},
+    {type:"fill",q:"Escribe el eslogan final de Katarina: 'Unamuno no es solo para __________.'",ans:["algunos","unos pocos"],hints:["El eslogan nuevo de Katarina habla de incluir a TODOS los estudiantes.","La palabra indica que la escuela no es solo para un grupo pequeño."]}
+  ]},
+  {id:5,icon:"⚖️",bg:"#EDE9FE",name:"Sala 6 — Comparar y contrastar",desc:"Los tres textos de la Unidad 6",code:"TEMAS",questions:[
+    {type:"mc",q:"¿Qué tienen en común Amelia, Kendra y Katarina?",opts:["Las tres son presidentas de su clase","Las tres enfrentan un reto y lo superan gracias a sus valores","Las tres tienen animales como mascotas","Las tres participan en un campamento de música"],ans:1,hints:["Piensa en la estructura de los tres cuentos — todas enfrentan algo difícil.","No todas tienen mascotas ni son presidentas.","En los tres textos, las protagonistas usan sus valores para superar obstáculos.","La respuesta correcta es: Las tres enfrentan un reto y lo superan gracias a sus valores."]},
+    {type:"mc",q:"¿En qué se diferencia el reto de Amelia del de Kendra y Katarina?",opts:["Amelia enfrenta un cambio personal (separarse de Rocky); las otras enfrentan retos de comunidad y liderazgo","Amelia no tiene ningún problema","Las tres enfrentan exactamente el mismo tipo de reto","Kendra y Katarina no tienen retos"],ans:0,hints:["El reto de Amelia es más personal — tiene que ver con ella y su mascota.","Kendra ayuda a su amiga; Katarina lidera su clase. ¿Y Amelia?","Amelia enfrenta un cambio en su vida personal, no un reto de liderazgo.","La respuesta correcta es: Amelia enfrenta un cambio personal; las otras enfrentan retos de comunidad."]},
+    {type:"mc",q:"¿Cuál es un tema compartido por los tres textos?",opts:["La importancia del deporte","La amistad, la comunidad y apoyarse mutuamente","Los animales como mejores amigos","La competencia entre escuelas"],ans:1,hints:["Piensa en qué lección de vida aparece en los tres cuentos.","Los tres textos muestran la importancia de las relaciones con los demás.","Amelia tiene a Rocky, Kendra tiene a Sara, Katarina tiene a sus compañeros.","La respuesta correcta es: La amistad, la comunidad y apoyarse mutuamente."]}
+  ]},
+  {id:6,icon:"✏️",bg:"#FFE4E6",name:"Sala 7 — Gramática",desc:"Plurales irregulares (-z → -ces)",code:"PLUCES",questions:[
+    {type:"mc",q:"¿Cuál es el plural correcto de 'feliz'?",opts:["felizs","felizes","felices","felics"],ans:2,hints:["Las palabras que terminan en -z tienen un cambio especial en plural.","No se agrega una 's' directamente — hay una transformación.","La -z cambia a -c y luego se agrega -es.","La respuesta correcta es: felices."]},
+    {type:"mc",q:"¿Cuál oración usa el plural irregular correctamente?",opts:["Los leones son animales ferozs.","Los leones son animales ferozes.","Los leones son animales feroces.","Los leones son animales ferocs."],ans:2,hints:["Recuerda la regla: -z cambia a -ces en plural.","Feroz termina en -z. Aplica la regla.","Feroz → fero-c-es, igual que feliz → felices.","La respuesta correcta es: feroces."]},
+    {type:"fill",q:"Escribe el plural de 'audaz': __________",ans:["audaces"],hints:["Aplica la regla -z → -ces: au-da-z → au-da-___","La respuesta es: audaces."]},
+    {type:"fill",q:"Escribe el plural de 'veloz': __________",ans:["veloces"],hints:["Aplica la regla: ve-lo-z → ve-lo-___","La respuesta es: veloces."]}
+  ]},
+  {id:7,icon:"💬",bg:"#FEE2E2",name:"Sala 8 — Escritura y reflexión",desc:"Pensamiento crítico sobre los tres textos",code:"LIBRE",questions:[
+    {type:"mc",q:"¿Cuál es el mejor comienzo para una conclusión de un ensayo?",opts:["'Primero, Katarina...'","'En conclusión, estos textos nos enseñan que...'","'Yo creo que...' sin ningún apoyo del texto","'El texto dice...' al final sin cerrar la idea"],ans:1,hints:["Una conclusión cierra el ensayo — no empieza un punto nuevo.","Busca la opción que retoma la idea central y la cierra.","Los conectores como 'en conclusión' son propios de las conclusiones.","La respuesta correcta es: 'En conclusión, estos textos nos enseñan que...'"]},
+    {type:"mc",q:"¿Qué tipo de pregunta te pide usar el texto Y tu propia opinión o experiencia?",opts:["Right There","Think and Search","Author and Me"],ans:2,hints:["Right There solo necesita el texto. Think and Search busca en varias partes.","Author and Me combina DOS fuentes: el texto y TU propio pensamiento.","'Author and Me' — el autor da información y TÚ la conectas con tus ideas.","La respuesta correcta es: Author and Me."]},
+    {type:"mc",q:"¿Qué pregunta QAR te pide reflexionar sobre consecuencias usando TUS ideas?",opts:["Right There: la respuesta está en el texto","Think and Search: busco en varias partes","Author and Me: uso el texto y reflexiono con mis propias ideas"],ans:2,hints:["¿Puedes encontrar las consecuencias directamente en el texto, o tienes que pensar tú también?","Reflexionar sobre consecuencias requiere tu propio razonamiento.","Cuando das tu opinión y la apoyas con evidencia del texto, usas Author and Me.","La respuesta correcta es: Author and Me."]}
+  ]}
 ];
 
-let state = ROOMS.map((_,i) => ({open: i===0, done: false, qi: 0, score: 0}));
-let codes = [];
+let state=ROOMS.map((_,i)=>({open:i===0,done:false,qi:0,attempts:0}));
+let codes=[];
 
-function updateProgress() {
-  const done = state.filter(s=>s.done).length;
-  document.getElementById('pbar').style.width = (done/TOTAL*100)+'%';
-  document.getElementById('plabel').textContent = done+' de '+TOTAL+' salas completadas';
-  if (done === TOTAL) {
-    document.getElementById('final-words').textContent = codes.join('  ·  ');
-    document.getElementById('final-panel').classList.add('show');
-    document.getElementById('final-panel').scrollIntoView({behavior:'smooth', block:'center'});
+function updateProgress(){
+  const done=state.filter(s=>s.done).length;
+  document.getElementById('pbar').style.width=(done/TOTAL*100)+'%';
+  document.getElementById('plabel').textContent=done+' de '+TOTAL+' salas completadas';
+  if(done===TOTAL){
+    document.getElementById('final-words').textContent=codes.join('  ·  ');
+    const fp=document.getElementById('final-panel');
+    fp.classList.add('show');
+    fp.scrollIntoView({behavior:'smooth',block:'center'});
   }
 }
 
-function render() {
-  const list = document.getElementById('rooms-list');
-  list.innerHTML = '';
-  ROOMS.forEach((room, i) => {
-    const st = state[i];
-    const div = document.createElement('div');
-    div.className = 'room-card' + (st.done?' done':!st.open?' locked':'');
-    div.innerHTML = `
+function render(){
+  const list=document.getElementById('rooms-list');
+  list.innerHTML='';
+  ROOMS.forEach((room,i)=>{
+    const st=state[i];
+    const div=document.createElement('div');
+    div.className='room-card'+(st.done?' done':!st.open?' locked':'');
+    div.innerHTML=`
       <div class="room-header" onclick="toggle(${i})">
         <div class="room-icon" style="background:${room.bg}">${room.icon}</div>
         <div class="room-info">
@@ -566,101 +188,151 @@ function render() {
       </div>
       <div class="challenge-body ${st.open&&!st.done?'open':''}" id="cb-${i}"></div>`;
     list.appendChild(div);
-    if (st.open && !st.done) renderQ(i);
+    if(st.open&&!st.done) renderQ(i);
   });
   updateProgress();
 }
 
-function toggle(i) {
-  if (!state[i].open || state[i].done) return;
-  const cb = document.getElementById('cb-'+i);
+function toggle(i){
+  if(!state[i].open||state[i].done) return;
+  const cb=document.getElementById('cb-'+i);
   cb.classList.toggle('open');
-  if (cb.classList.contains('open') && !cb.innerHTML.trim()) renderQ(i);
+  if(cb.classList.contains('open')&&!cb.innerHTML.trim()) renderQ(i);
 }
 
-function renderQ(i) {
-  const room = ROOMS[i];
-  const st = state[i];
-  const cb = document.getElementById('cb-'+i);
-  if (st.qi >= room.questions.length) { markDone(i); return; }
-  const q = room.questions[st.qi];
-  let h = `<div class="q-label">Pregunta ${st.qi+1} de ${room.questions.length}</div>`;
-  h += `<div class="q-text">${q.q}</div>`;
-  if (q.type === 'mc') {
-    h += `<div class="options">`;
-    q.opts.forEach((o,oi) => { h += `<button class="opt" id="o-${i}-${oi}" onclick="chkMC(${i},${oi})">${o}</button>`; });
-    h += `</div>`;
+function renderQ(i){
+  const room=ROOMS[i]; const st=state[i]; const cb=document.getElementById('cb-'+i);
+  if(st.qi>=room.questions.length){markDone(i);return;}
+  const q=room.questions[st.qi];
+  const maxA=q.type==='mc'?MAX_MC:MAX_FILL;
+  st.attempts=0;
+  let dots='';
+  for(let d=0;d<maxA;d++) dots+=`<div class="attempt-dot" id="dot-${i}-${d}"></div>`;
+  let h=`<div class="q-label">Pregunta ${st.qi+1} de ${room.questions.length}</div>`;
+  h+=`<div class="q-text">${q.q}</div>`;
+  h+=`<div class="attempts-bar">${dots}<span class="attempts-label" id="att-${i}">${maxA} intentos</span></div>`;
+  if(q.type==='mc'){
+    h+=`<div class="options">`;
+    q.opts.forEach((o,oi)=>{h+=`<button class="opt" id="o-${i}-${oi}" onclick="chkMC(${i},${oi})">${o}</button>`;});
+    h+=`</div>`;
   } else {
-    h += `<div class="fill-wrap"><input type="text" class="fill-input" id="fi-${i}" placeholder="Escribe tu respuesta aquí..."><button class="btn-check" onclick="chkFill(${i})">Verificar ✓</button></div>`;
+    h+=`<div class="fill-wrap"><input type="text" class="fill-input" id="fi-${i}" placeholder="Escribe tu respuesta aquí..."><button class="btn-check" id="bc-${i}" onclick="chkFill(${i})">Verificar ✓</button></div>`;
   }
-  h += `<div class="feedback" id="fb-${i}"></div>`;
-  h += `<button class="btn-next" id="bn-${i}" onclick="nextQ(${i})">Siguiente pregunta →</button>`;
-  h += `<div class="code-reveal" id="cr-${i}"><div class="code-emoji">🔑</div><div class="code-label">¡Palabra clave desbloqueada!</div><div class="code-word" id="cw-${i}"></div><div class="code-hint">Anótala — la necesitarás al final</div></div>`;
-  cb.innerHTML = h;
+  h+=`<div class="hint-box" id="hint-${i}"></div>`;
+  h+=`<div class="feedback" id="fb-${i}"></div>`;
+  h+=`<button class="btn-next" id="bn-${i}" onclick="nextQ(${i})">Siguiente pregunta →</button>`;
+  h+=`<div class="code-reveal" id="cr-${i}"><div class="code-emoji">🔑</div><div class="code-label">¡Palabra clave desbloqueada!</div><div class="code-word" id="cw-${i}"></div><div class="code-hint">Anótala — la necesitarás al final</div></div>`;
+  cb.innerHTML=h;
 }
 
-function chkMC(i, chosen) {
-  const q = ROOMS[i].questions[state[i].qi];
-  document.querySelectorAll(`[id^="o-${i}-"]`).forEach(o => o.disabled = true);
-  const correct = chosen === q.ans;
-  document.getElementById(`o-${i}-${chosen}`).classList.add(correct?'correct':'wrong');
-  if (!correct) document.getElementById(`o-${i}-${q.ans}`).classList.add('correct');
-  showFB(i, correct, q);
-  advance(i, correct);
+function updateDots(i,used,max){
+  for(let d=0;d<max;d++){
+    const dot=document.getElementById(`dot-${i}-${d}`);
+    if(dot) dot.className='attempt-dot'+(d<used?' used':'');
+  }
+  const lbl=document.getElementById('att-'+i);
+  const left=max-used;
+  if(lbl) lbl.textContent=left>0?left+' intento'+(left===1?'':'s'):'Sin intentos';
 }
 
-function chkFill(i) {
-  const q = ROOMS[i].questions[state[i].qi];
-  const val = (document.getElementById('fi-'+i).value||'').trim().toLowerCase();
-  const correct = q.ans.some(a => val.includes(a.toLowerCase()));
-  document.getElementById('fi-'+i).disabled = true;
-  document.querySelector(`#cb-${i} .btn-check`).disabled = true;
-  showFB(i, correct, q);
-  advance(i, correct);
-}
-
-function showFB(i, correct, q) {
-  const fb = document.getElementById('fb-'+i);
-  fb.className = 'feedback show ' + (correct?'fb-ok':'fb-err');
-  fb.textContent = correct ? q.fb_ok : q.fb_err;
-}
-
-function advance(i, correct) {
-  if (correct) state[i].score++;
-  state[i].qi++;
-  const bn = document.getElementById('bn-'+i);
-  if (state[i].qi >= ROOMS[i].questions.length) {
-    setTimeout(() => revealCode(i), 1300);
+function chkMC(i,chosen){
+  const q=ROOMS[i].questions[state[i].qi]; const st=state[i];
+  st.attempts++;
+  updateDots(i,st.attempts,MAX_MC);
+  const correct=chosen===q.ans;
+  const fb=document.getElementById('fb-'+i);
+  const hint=document.getElementById('hint-'+i);
+  const bn=document.getElementById('bn-'+i);
+  if(correct){
+    document.getElementById(`o-${i}-${chosen}`).classList.add('correct');
+    document.querySelectorAll(`[id^="o-${i}-"]`).forEach(o=>o.disabled=true);
+    hint.classList.remove('show');
+    fb.className='feedback show fb-ok';
+    fb.textContent='¡Correcto! Muy bien. 🎉';
+    st.qi++;
+    if(st.qi>=ROOMS[i].questions.length){setTimeout(()=>revealCode(i),1200);}
+    else{bn.style.display='inline-block';bn.textContent='Siguiente pregunta →';}
   } else {
-    bn.style.display = 'inline-block';
-    bn.textContent = correct ? 'Siguiente pregunta →' : 'Continuar →';
+    document.getElementById(`o-${i}-${chosen}`).classList.add('wrong');
+    setTimeout(()=>{const el=document.getElementById(`o-${i}-${chosen}`);if(el)el.classList.remove('wrong');},800);
+    if(st.attempts>=MAX_MC){
+      document.querySelectorAll(`[id^="o-${i}-"]`).forEach(o=>o.disabled=true);
+      document.getElementById(`o-${i}-${q.ans}`).classList.add('correct');
+      hint.classList.remove('show');
+      fb.className='feedback show fb-reveal';
+      fb.textContent='Sin más intentos. La respuesta correcta está marcada en verde. ¡Sigue adelante!';
+      st.qi++;
+      if(st.qi>=ROOMS[i].questions.length){setTimeout(()=>revealCode(i),1800);}
+      else{bn.style.display='inline-block';bn.textContent='Continuar →';}
+    } else {
+      const hintText=q.hints?q.hints[st.attempts-1]:'';
+      if(hintText){hint.className='hint-box show';hint.textContent='💡 Pista: '+hintText;}
+      const left=MAX_MC-st.attempts;
+      fb.className='feedback show fb-err';
+      fb.textContent='Respuesta incorrecta. Te quedan '+left+' intento'+(left===1?'':'s')+'.';
+    }
   }
 }
 
-function nextQ(i) {
-  document.getElementById('bn-'+i).style.display = 'none';
-  renderQ(i);
+function chkFill(i){
+  const q=ROOMS[i].questions[state[i].qi]; const st=state[i];
+  st.attempts++;
+  updateDots(i,st.attempts,MAX_FILL);
+  const val=(document.getElementById('fi-'+i).value||'').trim().toLowerCase();
+  const correct=q.ans.some(a=>val.includes(a.toLowerCase()));
+  const fb=document.getElementById('fb-'+i);
+  const hint=document.getElementById('hint-'+i);
+  const bn=document.getElementById('bn-'+i);
+  const bc=document.getElementById('bc-'+i);
+  if(correct){
+    if(bc)bc.disabled=true;
+    document.getElementById('fi-'+i).disabled=true;
+    hint.classList.remove('show');
+    fb.className='feedback show fb-ok';
+    fb.textContent='¡Correcto! Excelente. 🎉';
+    st.qi++;
+    if(st.qi>=ROOMS[i].questions.length){setTimeout(()=>revealCode(i),1200);}
+    else{bn.style.display='inline-block';bn.textContent='Siguiente pregunta →';}
+  } else {
+    if(st.attempts>=MAX_FILL){
+      if(bc)bc.disabled=true;
+      document.getElementById('fi-'+i).disabled=true;
+      hint.classList.remove('show');
+      fb.className='feedback show fb-reveal';
+      fb.textContent='💡 La respuesta correcta es: '+q.ans[0]+'. ¡Sigue adelante!';
+      st.qi++;
+      if(st.qi>=ROOMS[i].questions.length){setTimeout(()=>revealCode(i),1800);}
+      else{bn.style.display='inline-block';bn.textContent='Continuar →';}
+    } else {
+      const hintText=q.hints?q.hints[st.attempts-1]:'';
+      if(hintText){hint.className='hint-box show';hint.textContent='💡 Pista: '+hintText;}
+      fb.className='feedback show fb-err';
+      fb.textContent='Respuesta incorrecta. Tienes 1 intento más.';
+    }
+  }
 }
 
-function revealCode(i) {
-  const code = ROOMS[i].code;
-  const bn = document.getElementById('bn-'+i);
-  if (bn) bn.style.display = 'none';
-  document.getElementById('cw-'+i).textContent = code;
+function nextQ(i){document.getElementById('bn-'+i).style.display='none';renderQ(i);}
+
+function revealCode(i){
+  const code=ROOMS[i].code;
+  const bn=document.getElementById('bn-'+i);
+  if(bn)bn.style.display='none';
+  document.getElementById('cw-'+i).textContent=code;
   document.getElementById('cr-'+i).classList.add('show');
-  if (!codes.includes(code)) codes.push(code);
-  setTimeout(() => markDone(i), 2200);
+  if(!codes.includes(code))codes.push(code);
+  setTimeout(()=>markDone(i),2200);
 }
 
-function markDone(i) {
-  state[i].done = true;
-  if (i+1 < ROOMS.length) state[i+1].open = true;
+function markDone(i){
+  state[i].done=true;
+  if(i+1<ROOMS.length)state[i+1].open=true;
   render();
-  if (i+1 < ROOMS.length) {
-    setTimeout(() => {
-      const next = document.querySelectorAll('.room-card')[i+1];
-      if (next) next.scrollIntoView({behavior:'smooth', block:'start'});
-    }, 300);
+  if(i+1<ROOMS.length){
+    setTimeout(()=>{
+      const next=document.querySelectorAll('.room-card')[i+1];
+      if(next)next.scrollIntoView({behavior:'smooth',block:'start'});
+    },300);
   }
 }
 
